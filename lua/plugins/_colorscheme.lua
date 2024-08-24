@@ -7,9 +7,6 @@ return {
 		require("catppuccin").setup({
 			flavour = "mocha",
 			transparent_background = true,
-			navic = {
-				enabled = true,
-			},
 		})
 		vim.cmd("colorscheme catppuccin")
 	end,
