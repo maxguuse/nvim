@@ -69,6 +69,19 @@ return {
 								client.server_capabilities.documentFormattingProvider = false
 								client.server_capabilities.documentFormattingRangeProvider = false
 							end,
+							settings = {
+								gopls = {
+									experimentalPostfixCompletions = true,
+									analyses = {
+										unusedparams = true,
+										shadow = true,
+									},
+									staticcheck = true,
+								},
+							},
+							init_options = {
+								usePlaceholders = true,
+							},
 						})
 					end,
 					["lua_ls"] = function()
@@ -116,6 +129,7 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
+			"L3MON4D3/LuaSnip",
 			{
 				"windwp/nvim-autopairs",
 				event = "InsertEnter",
@@ -125,6 +139,7 @@ return {
 		config = function()
 			local cmp = require("cmp")
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+			local luasnip = require("luasnip")
 
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
@@ -134,13 +149,41 @@ return {
 					documentation = cmp.config.window.bordered(),
 				},
 				mapping = cmp.mapping.preset.insert({
-					["<Tab>"] = cmp.mapping.select_next_item(),
-					["<S-Tab>"] = cmp.mapping.select_prev_item(),
+					["<Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_next_item()
+						elseif luasnip.locally_jumpable(1) then
+							luasnip.jump(1)
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
+					["<S-Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item()
+						elseif luasnip.locally_jumpable(-1) then
+							luasnip.jump(-1)
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.abort(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<CR>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							if luasnip.expandable() then
+								luasnip.expand()
+							else
+								cmp.confirm({
+									select = true,
+								})
+							end
+						else
+							fallback()
+						end
+					end),
 				}),
 				sources = cmp.config.sources({
 					{ name = "plugins" },
@@ -163,5 +206,12 @@ return {
 				}),
 			})
 		end,
+	},
+	{
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+		-- install jsregexp (optional!).
+		build = "make install_jsregexp",
 	},
 }
