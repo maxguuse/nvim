@@ -52,9 +52,6 @@ return {
 		event = {
 			"LspAttach",
 		},
-		dependencies = {
-			"nvim-telescope/telescope-fzf-native.nvim",
-		},
 		opts = {
 			sources = {
 				path = {
