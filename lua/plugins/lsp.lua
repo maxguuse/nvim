@@ -129,6 +129,7 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
+			"saadparwaiz1/cmp_luasnip",
 			"L3MON4D3/LuaSnip",
 			{
 				"windwp/nvim-autopairs",
@@ -192,6 +193,7 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "buffer" },
 					{ name = "nvim_lua" },
+					{ name = "luasnip", option = { show_autosnippets = true } },
 				}),
 			})
 
