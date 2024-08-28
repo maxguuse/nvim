@@ -130,6 +130,7 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"saadparwaiz1/cmp_luasnip",
+			"rafamadriz/friendly-snippets",
 			"L3MON4D3/LuaSnip",
 			{
 				"windwp/nvim-autopairs",
@@ -141,6 +142,8 @@ return {
 			local cmp = require("cmp")
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 			local luasnip = require("luasnip")
+
+			require("luasnip.loaders.from_vscode").lazy_load()
 
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
