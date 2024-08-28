@@ -26,7 +26,11 @@ return {
 			"nvim-lua/plenary.nvim",
 		},
 		keys = {
-			{ "<leader>pf", "<cmd>Telescope git_files<CR>", "Project files" },
+			{
+				"<leader>pf",
+				'<cmd>lua =require("telescope.builtin").find_files({' .. "cwd = '" .. get_cwd() .. "'})<CR>",
+				"Project files",
+			},
 			{
 				"<leader>pg",
 				'<cmd>lua =require("telescope.builtin").live_grep({' .. "cwd = '" .. get_cwd() .. "'})<CR>",
@@ -39,7 +43,7 @@ return {
 			},
 			{ "<leader>pt", "<cmd>Telescope toggleterm_manager<CR>", "Terminals" },
 			{ "<leader>pu", "<cmd>Telescope undo<CR>", "Undo tree" },
-			{ "<leader>ps", "<cmd>Telescope git_status<CR>", "Undo tree" },
+			{ "<leader>ps", "<cmd>Telescope git_status<CR>", "Git status" },
 		},
 		config = function()
 			local telescope = require("telescope")
