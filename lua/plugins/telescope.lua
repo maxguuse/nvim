@@ -1,3 +1,4 @@
+---@diagnostic disable-next-line: unused-local, unused-function
 local function get_cwd()
 	local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
 
@@ -28,12 +29,12 @@ return {
 		keys = {
 			{
 				"<leader>pf",
-				'<cmd>lua =require("telescope.builtin").find_files({' .. "cwd = '" .. get_cwd() .. "'})<CR>",
+				'<cmd>lua =require("telescope.builtin").find_files({ cwd = get_cwd })<CR>',
 				"Project files",
 			},
 			{
 				"<leader>pg",
-				'<cmd>lua =require("telescope.builtin").live_grep({' .. "cwd = '" .. get_cwd() .. "'})<CR>",
+				'<cmd>lua =require("telescope.builtin").live_grep({ cwd = get_cwd })<CR>',
 				"Live grep from project files",
 			},
 			{
