@@ -55,6 +55,3 @@ vim.opt.fillchars = {
 vim.schedule(function()
 	opt.clipboard = "unnamedplus"
 end)
-
-vim.cmd("highlight Normal guibg=none")
-vim.cmd("highlight NonText guibg=none")
