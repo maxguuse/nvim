@@ -55,6 +55,7 @@ return {
 					"hyprls",
 					"bashls",
 					"sqls",
+					"cssls",
 				},
 				handlers = {
 					function(server_name)
@@ -62,7 +63,21 @@ return {
 							capabilities = capabilities,
 						})
 					end,
-					gopls = function()
+					["cssls"] = function()
+						require("lspconfig").cssls.setup({
+							capabilities = capabilities,
+							on_attach = function(client)
+								client.server_capabilities.documentFormattingProvider = false
+								client.server_capabilities.documentFormattingRangeProvider = false
+							end,
+							settings = {
+								css = {
+									validate = false, -- Disable validation if you want to ignore errors
+								},
+							},
+						})
+					end,
+					["gopls"] = function()
 						require("lspconfig").gopls.setup({
 							capabilities = capabilities,
 							on_attach = function(client)
