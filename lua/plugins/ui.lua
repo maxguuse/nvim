@@ -73,4 +73,17 @@ return {
 			require("scrollbar.handlers.gitsigns").setup()
 		end,
 	},
+	{
+		"shortcuts/no-neck-pain.nvim",
+		version = "*",
+		opts = {
+			width = 135,
+			autocmds = {
+				enableOnVimEnter = true,
+			},
+			mappings = {
+				enabled = true,
+			},
+		},
+	},
 }
