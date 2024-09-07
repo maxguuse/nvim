@@ -78,9 +78,6 @@ return {
 		version = "*",
 		opts = {
 			width = 135,
-			autocmds = {
-				enableOnVimEnter = true,
-			},
 			mappings = {
 				enabled = true,
 			},
