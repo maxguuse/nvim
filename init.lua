@@ -27,5 +27,6 @@ require("lazy").setup({
 })
 
 require("settings")
+require("autocmd")
 require("keys.main")
 require("keys.plugins")
