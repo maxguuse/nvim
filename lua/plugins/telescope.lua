@@ -29,12 +29,20 @@ return {
 		keys = {
 			{
 				"<leader>pf",
-				'<cmd>lua =require("telescope.builtin").find_files({ cwd = get_cwd })<CR>',
+				function()
+					require("telescope.builtin").find_files({
+						cwd = get_cwd(),
+					})
+				end,
 				"Project files",
 			},
 			{
 				"<leader>pg",
-				'<cmd>lua =require("telescope.builtin").live_grep({ cwd = get_cwd })<CR>',
+				function()
+					require("telescope.builtin").live_grep({
+						cwd = get_cwd(),
+					})
+				end,
 				"Live grep from project files",
 			},
 			{
