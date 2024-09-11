@@ -56,6 +56,7 @@ return {
 					"bashls",
 					"sqls",
 					"cssls",
+					"yamlls",
 				},
 				handlers = {
 					function(server_name)
@@ -108,6 +109,15 @@ return {
 							end,
 						})
 					end,
+					["yamlls"] = function()
+						require("lspconfig").yamlls.setup({
+							capabilities = capabilities,
+							on_attach = function(client)
+								client.server_capabilities.documentFormattingProvider = false
+								client.server_capabilities.documentFormattingRangeProvider = false
+							end,
+						})
+					end,
 				},
 			})
 		end,
@@ -120,6 +130,7 @@ return {
 					lua = { "stylua" },
 					go = { "gofmt", "goimports", "gci", "golines" },
 					sql = { "sqlfmt" },
+					yaml = { "yamlfmt" },
 				},
 				format_on_save = false,
 				format_after_save = {
