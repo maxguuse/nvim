@@ -41,9 +41,14 @@ return {
 		config = function()
 			capabilities = vim.tbl_deep_extend(
 				"force",
+				vim.lsp.protocol.make_client_capabilities(),
 				require("lspconfig").util.default_config.capabilities,
 				require("cmp_nvim_lsp").default_capabilities()
 			)
+			capabilities.textDocument.foldingRange = {
+				dynamicRegistration = false,
+				lineFoldingOnly = true,
+			}
 
 			require("mason-lspconfig").setup({
 				ensure_installed = {
