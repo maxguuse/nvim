@@ -147,6 +147,8 @@ return {
 			require("conform").formatters.golines = {
 				args = { "--no-chain-split-dots" },
 			}
+
+			require("conform").formatters.yamlfmt = {}
 		end,
 	},
 	{
