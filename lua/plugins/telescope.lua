@@ -21,9 +21,7 @@ return {
 			"nvim-telescope/telescope-fzf-native.nvim",
 			"nvim-telescope/telescope-project.nvim",
 			"debugloop/telescope-undo.nvim",
-			"ryanmsnyder/toggleterm-manager.nvim",
 
-			"akinsho/nvim-toggleterm.lua",
 			"nvim-lua/plenary.nvim",
 		},
 		keys = {
@@ -50,7 +48,6 @@ return {
 				"<cmd>lua =require'telescope'.extensions.project.project({ display_type='full' })<CR>",
 				"Projects",
 			},
-			{ "<leader>pt", "<cmd>Telescope toggleterm_manager<CR>", "Terminals" },
 			{ "<leader>pu", "<cmd>Telescope undo<CR>", "Undo tree" },
 			{ "<leader>ps", "<cmd>Telescope git_status<CR>", "Git status" },
 		},
