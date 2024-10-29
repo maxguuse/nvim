@@ -49,7 +49,6 @@ lackluster
 ### Telescope
 telescope-fzf-native.nvim
 telescope-project.nvim
-telescope-ui-select.nvim
 telescope-undo.nvim
 telescope.nvim
 
