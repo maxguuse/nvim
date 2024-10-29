@@ -9,7 +9,4 @@ return {
 		},
 	},
 	opts = {},
-	-- config = function()
-	-- 	require("mini.files").setup()
-	-- end,
 }
