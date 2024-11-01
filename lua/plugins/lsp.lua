@@ -37,13 +37,14 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = {
 			"neovim/nvim-lspconfig",
+			"saghen/blink.cmp",
 		},
 		config = function()
 			capabilities = vim.tbl_deep_extend(
 				"force",
 				vim.lsp.protocol.make_client_capabilities(),
 				require("lspconfig").util.default_config.capabilities,
-				require("cmp_nvim_lsp").default_capabilities()
+				require("blink.cmp").get_lsp_capabilities()
 			)
 			capabilities.textDocument.foldingRange = {
 				dynamicRegistration = false,
@@ -152,104 +153,37 @@ return {
 		end,
 	},
 	{
-		"hrsh7th/nvim-cmp",
-		dependencies = {
-			"KadoBOT/cmp-plugins",
-			"Snikimonkd/cmp-go-pkgs",
-			"hrsh7th/cmp-nvim-lsp-signature-help",
-			"hrsh7th/cmp-nvim-lua",
-			"hrsh7th/cmp-cmdline",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"saadparwaiz1/cmp_luasnip",
-			"rafamadriz/friendly-snippets",
-			"L3MON4D3/LuaSnip",
-			{
-				"windwp/nvim-autopairs",
-				event = "InsertEnter",
-				opts = {},
+		"saghen/blink.cmp",
+		lazy = false,
+
+		dependencies = "rafamadriz/friendly-snippets",
+
+		version = "v0.*",
+
+		opts = {
+			keymap = {
+				["<C-f>"] = { "show" },
+				["<S-CR>"] = { "accept" },
+				["<S-Tab>"] = { "select_prev" },
+				["<Tab>"] = { "select_next" },
+				["<C-k>"] = { "scroll_documentation_up" },
+				["<C-j>"] = { "scroll_documentation_down" },
 			},
+
+			highlight = {
+				use_nvim_cmp_as_default = true,
+			},
+
+			nerd_font_variant = "mono",
+
+			trigger = { signature_help = { enabled = true } },
 		},
-		config = function()
-			local cmp = require("cmp")
-			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-			local luasnip = require("luasnip")
-
-			require("luasnip.loaders.from_vscode").lazy_load()
-
-			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-
-			cmp.setup({
-				window = {
-					completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered(),
-				},
-				mapping = cmp.mapping.preset.insert({
-					["<Tab>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_next_item()
-						elseif luasnip.locally_jumpable(1) then
-							luasnip.jump(1)
-						else
-							fallback()
-						end
-					end, { "i", "s" }),
-					["<S-Tab>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_prev_item()
-						elseif luasnip.locally_jumpable(-1) then
-							luasnip.jump(-1)
-						else
-							fallback()
-						end
-					end, { "i", "s" }),
-					["<C-b>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<C-Space>"] = cmp.mapping.complete(),
-					["<C-e>"] = cmp.mapping.abort(),
-					["<CR>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							if luasnip.expandable() then
-								luasnip.expand()
-							else
-								cmp.confirm({
-									select = true,
-								})
-							end
-						else
-							fallback()
-						end
-					end),
-				}),
-				sources = cmp.config.sources({
-					{ name = "plugins" },
-					{ name = "go_pkgs" },
-					{ name = "nvim_lsp_signature_help" },
-					{ name = "nvim_lsp" },
-					{ name = "buffer" },
-					{ name = "nvim_lua" },
-					{ name = "luasnip", option = { show_autosnippets = true } },
-				}),
-			})
-
-			-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-			cmp.setup.cmdline(":", {
-				mapping = cmp.mapping.preset.cmdline(),
-				sources = cmp.config.sources({
-					{ name = "path" },
-					matching = { disallow_symbol_nonprefix_matching = false },
-				}, {
-					{ name = "cmdline" },
-				}),
-			})
-		end,
 	},
 	{
-		"L3MON4D3/LuaSnip",
-		-- follow latest release.
-		version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-		-- install jsregexp (optional!).
-		build = "make install_jsregexp",
+		"echasnovski/mini.pairs",
+		version = "*",
+		lazy = true,
+		event = "InsertEnter",
+		opts = {},
 	},
 }
