@@ -60,9 +60,6 @@ return {
 					initial_mode = "normal",
 				},
 				extensions = {
-					-- ["ui-select"] = {
-					-- 	require("telescope.themes").get_dropdown({}),
-					-- },
 					["lazy_plugins"] = {
 						lazy_config = vim.fn.stdpath("config") .. "/init.lua",
 					},
