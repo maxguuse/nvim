@@ -53,7 +53,7 @@ return {
 		"Bekaboo/dropbar.nvim",
 		lazy = true,
 		event = {
-			"LspAttach",
+			"BufEnter",
 		},
 		opts = {
 			sources = {
