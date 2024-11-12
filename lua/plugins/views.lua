@@ -12,18 +12,18 @@ return {
 		opts = {},
 	},
 	{
-		"hedyhli/outline.nvim",
+		"oskarrrrrrr/symbols.nvim",
 		lazy = true,
-		cmd = { "Outline", "OutlineOpen" },
 		keys = {
 			{
 				"<leader>cs",
-				"<cmd>Outline<CR>",
-				desc = "Toggle outline",
+				"<cmd>Symbols<CR>",
+				desc = "Symbols",
 			},
 		},
 		config = function()
-			require("outline").setup({})
+			local r = require("symbols.recipes")
+			require("symbols").setup(r.DefaultFilters, r.AsciiSymbols, {})
 		end,
 	},
 }
