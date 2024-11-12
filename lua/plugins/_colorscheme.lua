@@ -1,36 +1,20 @@
 return {
 	{
-		"zaldih/themery.nvim",
+		"lmantw/themify.nvim",
 		lazy = false,
 		config = function()
-			require("themery").setup({
-				themes = {
-					"catppuccin-mocha",
-					"catppuccin-frappe",
-					"catppuccin-macchiato",
-					-- "catppuccin-latte",
-					"poimandres",
-					"lackluster",
-					"lackluster-hack",
-					"lackluster-mint",
+			require("themify").setup({
+				async = true,
+				{
+					"catppuccin/nvim",
+					blacklist = {
+						"catppuccin-latte",
+					},
 				},
-				livePreview = true,
+				"olivercederborg/poimandres.nvim",
+				"slugbyte/lackluster.nvim",
+				"wtfox/jellybeans.nvim",
 			})
 		end,
-	},
-	{
-		"catppuccin/nvim",
-		name = "catppuccin-colorscheme",
-		lazy = true,
-	},
-	{
-		"olivercederborg/poimandres.nvim",
-		name = "poimandres-colorscheme",
-		lazy = true,
-	},
-	{
-		"slugbyte/lackluster.nvim",
-		name = "lackluster-colorscheme",
-		lazy = true,
 	},
 }
