@@ -41,16 +41,9 @@ opt.smartindent = true
 
 -- For ufo.nvim purposes
 vim.o.foldenable = true
-vim.o.foldcolumn = "1"
+vim.o.foldcolumn = "0"
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
-
-vim.opt.fillchars = {
-	fold = " ",
-	foldopen = "",
-	foldclose = "",
-	foldsep = " ",
-}
 
 vim.schedule(function()
 	opt.clipboard = "unnamedplus"
