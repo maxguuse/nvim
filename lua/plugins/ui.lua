@@ -9,14 +9,4 @@ return {
 			require("scrollbar").setup({})
 		end,
 	},
-	{
-		"shortcuts/no-neck-pain.nvim",
-		version = "*",
-		opts = {
-			width = 135,
-			mappings = {
-				enabled = true,
-			},
-		},
-	},
 }
