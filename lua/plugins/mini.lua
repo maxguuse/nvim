@@ -42,6 +42,11 @@ return {
 		opts = {},
 	},
 	{
+		"echasnovski/mini.surround",
+		version = false,
+		opts = {},
+	},
+	{
 		"echasnovski/mini-git",
 		version = false,
 		config = function()
