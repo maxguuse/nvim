@@ -6,7 +6,7 @@ opt.cursorcolumn = true
 opt.number = true
 opt.relativenumber = true
 
-opt.showmode = true
+opt.showmode = false
 opt.termguicolors = true
 
 opt.splitright = true

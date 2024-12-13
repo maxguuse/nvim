@@ -1,14 +1,41 @@
+local modes = {
+	["n"] = "NO",
+	["i"] = "IN",
+	["v"] = "VI",
+	["V"] = "VL",
+	["\x16"] = "VB",
+	["c"] = "CO",
+	["t"] = "TE",
+}
+
+local function statusline_mode()
+	local mode = vim.fn.mode()
+	local mode_str = (mode == "n" and (vim.bo.ro or not vim.bo.ma)) and "RO" or modes[mode]
+
+	return string.format(" %s ", mode_str)
+end
+
+local function statusline_filename()
+	if vim.bo.buftype == "terminal" then
+		return "%t"
+	else
+		return "%f%m"
+	end
+end
+
 local function active_statusline()
 	local MiniStatusline = require("mini.statusline")
 
+	local mode = statusline_mode()
 	local git = MiniStatusline.section_git({ trunc_width = 40 })
+	local filename = statusline_filename()
 	local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
-	local filename = MiniStatusline.section_filename({ trunc_width = 140 })
 
 	return MiniStatusline.combine_groups({
-		{ hl = "MiniStatuslineDevinfo", strings = { git } },
-		{ hl = "MiniStatuslineDevinfo", strings = { diagnostics } },
-		{ hl = "MiniStatuslineFilename", strings = { filename } },
+		{ strings = { mode } },
+		{ strings = { git } },
+		{ strings = { filename } },
+		{ strings = { diagnostics } },
 	})
 end
 
