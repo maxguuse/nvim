@@ -179,11 +179,4 @@ return {
 			trigger = { signature_help = { enabled = true } },
 		},
 	},
-	{
-		"echasnovski/mini.pairs",
-		version = "*",
-		lazy = true,
-		event = "InsertEnter",
-		opts = {},
-	},
 }

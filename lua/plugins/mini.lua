@@ -24,6 +24,31 @@ return {
 		opts = {},
 	},
 	{
+		"echasnovski/mini.files",
+		version = false,
+		keys = {
+			{
+				"<leader>mf",
+				"<cmd>lua =require'mini.files'.open()<CR>",
+				"Mini Files",
+			},
+		},
+		opts = {},
+	},
+	{
+		"echasnovski/mini.pairs",
+		version = false,
+		event = "InsertEnter",
+		opts = {},
+	},
+	{
+		"echasnovski/mini-git",
+		version = false,
+		config = function()
+			require("mini.git").setup()
+		end,
+	},
+	{
 		"echasnovski/mini.statusline",
 		version = false,
 		dependencies = {
