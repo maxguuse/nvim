@@ -9,4 +9,8 @@ return {
 		"mawkler/hml.nvim",
 		opts = {},
 	},
+	{
+		"mvllow/modes.nvim",
+		opts = {},
+	},
 }
