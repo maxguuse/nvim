@@ -1,8 +1,6 @@
 return {
 	"otavioschwanck/arrow.nvim",
-	keys = {
-		{ "<leader>ml", "<cmd>Telescope undo<CR>", "Undo tree" },
-	},
+	keys = {},
 	opts = {
 		show_icons = true,
 		always_show_path = false,
