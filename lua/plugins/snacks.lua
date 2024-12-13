@@ -1,6 +1,20 @@
 return {
 	"folke/snacks.nvim",
 	lazy = false,
+	keys = {
+		{
+			"<leader>nd",
+			function()
+				require("snacks").toggle.dim():toggle()
+			end,
+		},
+		{
+			"<leader>nz",
+			function()
+				require("snacks").toggle.zen():toggle()
+			end,
+		},
+	},
 	opts = {
 		dashboard = {
 			sections = {
@@ -11,6 +25,11 @@ return {
 				{ section = "startup" },
 			},
 		},
+		toggle = {},
+		dim = {},
+		zen = {},
+		bigfile = {},
+		quickfile = {},
 		input = {},
 	},
 }
