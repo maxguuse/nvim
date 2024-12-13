@@ -29,4 +29,3 @@ require("lazy").setup({
 
 require("autocmd")
 require("keys.main")
-require("keys.plugins")

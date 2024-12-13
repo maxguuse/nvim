@@ -1,6 +1,27 @@
 return {
 	"otavioschwanck/arrow.nvim",
-	keys = {},
+	keys = {
+		{
+			"H",
+			function()
+				require("arrow.persist").previous()
+			end,
+		},
+		{
+			"L",
+			function()
+				require("arrow.persist").next()
+			end,
+		},
+		{
+			"<C-s>",
+			function()
+				require("arrow.persist").toggle()
+			end,
+		},
+		{ "ml" },
+		{ "mb" },
+	},
 	opts = {
 		show_icons = true,
 		always_show_path = false,
