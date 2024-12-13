@@ -1,14 +1,14 @@
 return {
-	"otavioschwanck/arrow.nvim",
+	"maxguuse/arrow.nvim",
 	keys = {
 		{
-			"H",
+			"<C-h>",
 			function()
 				require("arrow.persist").previous()
 			end,
 		},
 		{
-			"L",
+			"<C-l>",
 			function()
 				require("arrow.persist").next()
 			end,
