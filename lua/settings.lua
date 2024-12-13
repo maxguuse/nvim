@@ -22,7 +22,7 @@ opt.undofile = true
 
 opt.signcolumn = "yes"
 
-opt.scrolloff = 10
+opt.scrolloff = 5
 opt.updatetime = 250
 opt.timeoutlen = 2000
 

@@ -5,4 +5,8 @@ return {
 			require("scrollbar").setup({})
 		end,
 	},
+	{
+		"mawkler/hml.nvim",
+		opts = {},
+	},
 }
