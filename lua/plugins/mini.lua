@@ -18,11 +18,19 @@ end
 local function statusline_filename()
 	if vim.bo.buftype == "terminal" then
 		return "%t"
-	else
-		return "%f%m"
 	end
+
+	return "%f%m"
 end
 
+local function statusline_arrow()
+	local arrow = require("arrow.statusline")
+	local is_saved = arrow.is_on_arrow_file()
+
+	if is_saved then
+		return string.format("󱡁%s", is_saved)
+	end
+end
 local function active_statusline()
 	local MiniStatusline = require("mini.statusline")
 
@@ -30,11 +38,12 @@ local function active_statusline()
 	local git = MiniStatusline.section_git({ trunc_width = 40 })
 	local filename = statusline_filename()
 	local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
+	local arrow = statusline_arrow()
 
 	return MiniStatusline.combine_groups({
 		{ strings = { mode } },
 		{ strings = { git } },
-		{ strings = { filename } },
+		{ strings = { filename, arrow } },
 		{ strings = { diagnostics } },
 	})
 end
