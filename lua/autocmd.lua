@@ -1,6 +1,6 @@
 vim.api.nvim_create_autocmd("BufEnter", {
 	callback = function()
-		local last_dir_file = os.getenv("HOME") .. "/.config/nvim/.last_nvim_dir"
+		local last_dir_file = os.getenv("HOME") .. "/.cache/nvim/last_dir/" .. os.getenv("NVIM_LAST_FILENAME")
 		local current_dir = vim.fn.getcwd()
 		vim.fn.writefile({ current_dir }, last_dir_file)
 	end,
