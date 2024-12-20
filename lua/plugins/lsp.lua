@@ -137,6 +137,14 @@ return {
 					go = { "gofmt", "goimports", "gci", "golines" },
 					sql = { "sqlfmt" },
 					yaml = { "yamlfmt" },
+					fish = { "fish" },
+				},
+				formatters = {
+					fish = {
+						command = "fish_indent",
+						args = { "-w", "$FILENAME" },
+						stdin = false,
+					},
 				},
 				format_on_save = false,
 				format_after_save = {
