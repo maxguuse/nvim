@@ -163,11 +163,8 @@ return {
 	{
 		"saghen/blink.cmp",
 		lazy = false,
-
 		dependencies = "rafamadriz/friendly-snippets",
-
 		version = "v0.*",
-
 		opts = {
 			keymap = {
 				["<C-f>"] = { "show" },
@@ -177,14 +174,10 @@ return {
 				["<C-k>"] = { "scroll_documentation_up" },
 				["<C-j>"] = { "scroll_documentation_down" },
 			},
-
-			highlight = {
+			appearance = {
 				use_nvim_cmp_as_default = true,
+				nerd_font_variant = "mono",
 			},
-
-			nerd_font_variant = "mono",
-
-			trigger = { signature_help = { enabled = true } },
 		},
 	},
 }
