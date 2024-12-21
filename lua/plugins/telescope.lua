@@ -14,6 +14,14 @@ local function get_cwd()
 	return vim.loop.cwd()
 end
 
+local function add_selection_to_arrow(prompt_bufnr)
+	local action_state = require("telescope.actions.state")
+	local current_picker = action_state.get_current_picker(prompt_bufnr)
+	for _, v in ipairs(current_picker:get_multi_selection()) do
+		require("arrow.persist").toggle(get_cwd() .. "/" .. v[1])
+	end
+end
+
 return {
 	{
 		"nvim-telescope/telescope.nvim",
@@ -58,6 +66,16 @@ return {
 			telescope.setup({
 				defaults = {
 					initial_mode = "normal",
+					mappings = {
+						i = {
+							["<C-c>"] = function()
+								vim.api.nvim_command("stopinsert")
+							end,
+						},
+						n = {
+							["<M-a>"] = add_selection_to_arrow,
+						},
+					},
 				},
 				extensions = {
 					["lazy_plugins"] = {
