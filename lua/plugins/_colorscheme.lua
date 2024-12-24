@@ -13,7 +13,6 @@ return {
 				},
 				"olivercederborg/poimandres.nvim",
 				"slugbyte/lackluster.nvim",
-				"Vallen217/eidolon.nvim",
 				"wtfox/jellybeans.nvim",
 			})
 		end,
