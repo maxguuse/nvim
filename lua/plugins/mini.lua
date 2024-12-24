@@ -91,6 +91,11 @@ return {
 		end,
 	},
 	{
+		"echasnovski/mini.cursorword",
+		version = false,
+		opts = {},
+	},
+	{
 		"echasnovski/mini.hipatterns",
 		version = false,
 		config = function()
