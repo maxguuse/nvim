@@ -1,6 +1,6 @@
 {
   "arrow.nvim": { "branch": "master", "commit": "4222ecb3dc3f25d3bc6ec348b1fc94b8e1d2c312" },
-  "blink.cmp": { "branch": "main", "commit": "ca05bb33eb071d916d33af08cae8034c3d8002b5" },
+  "blink.cmp": { "branch": "main", "commit": "5f442681df24fe705d1ee7ce5b4d435aa4b4dee4" },
   "cloak.nvim": { "branch": "main", "commit": "648aca6d33ec011dc3166e7af3b38820d01a71e4" },
   "conform.nvim": { "branch": "master", "commit": "880aa379f91ed36c328806846f7c1eca9b49241e" },
   "friendly-snippets": { "branch": "main", "commit": "efff286dd74c22f731cdec26a70b46e5b203c619" },
