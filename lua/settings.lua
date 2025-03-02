@@ -1,5 +1,8 @@
 local opt = vim.opt
 
+opt.autoread = true
+opt.swapfile = false
+
 opt.cursorline = true
 opt.cursorcolumn = true
 
@@ -38,6 +41,8 @@ opt.showmatch = true
 opt.shiftwidth = 4
 opt.tabstop = 4
 opt.smartindent = true
+
+opt.cmdheight = 0
 
 -- For ufo.nvim purposes
 vim.o.foldenable = true
