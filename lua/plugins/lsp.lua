@@ -163,7 +163,9 @@ return {
 	{
 		"saghen/blink.cmp",
 		lazy = false,
-		dependencies = "rafamadriz/friendly-snippets",
+		dependencies = {
+			"rafamadriz/friendly-snippets",
+		},
 		version = "v0.*",
 		opts = {
 			keymap = {
@@ -179,6 +181,12 @@ return {
 				nerd_font_variant = "mono",
 			},
 			signature = { enabled = true },
+			cmdline = {
+				keymap = {
+					["<S-CR>"] = { "show", "accept" },
+				},
+				completion = { menu = { auto_show = true } },
+			},
 		},
 	},
 }
