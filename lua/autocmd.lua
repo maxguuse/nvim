@@ -1,4 +1,6 @@
+vim.api.nvim_create_augroup("ggoose", { clear = true })
 vim.api.nvim_create_autocmd("BufEnter", {
+	group = "ggoose",
 	callback = function()
 		local filename = os.getenv("NVIM_LAST_FILENAME")
 		if filename == nil then
