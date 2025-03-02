@@ -20,15 +20,11 @@ return {
 	keys = {
 		{
 			"<leader>nd",
-			function()
-				require("snacks").toggle.dim():toggle()
-			end,
+			":lua Snacks.toggle.dim():toggle()<CR>",
 		},
 		{
 			"<leader>nz",
-			function()
-				require("snacks").toggle.zen():toggle()
-			end,
+			":lua Snacks.toggle.zen():toggle()<CR>",
 		},
 		{
 			"<leader>pf",
@@ -50,28 +46,48 @@ return {
 		},
 		{
 			"<leader>pp",
-			function()
-				require("snacks").picker.projects()
-			end,
+			":lua Snacks.picker.projects()<CR>",
 			desc = "Projects",
 		},
 		{
 			"<leader>pk",
-			function()
-				require("snacks").picker.keymaps()
-			end,
+			":lua Snacks.picker.keymaps()<CR>",
 			desc = "Keymaps",
 		},
 		{
 			"<leader>pc",
-			function()
-				require("snacks").picker.lazy()
-			end,
+			":lua Snacks.picker.lazy()<CR>",
 			desc = "Search for Plugin Spec",
 		},
 	},
 	opts = {
 		dashboard = {
+			preset = {
+				keys = {
+					{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+					{
+						icon = " ",
+						key = "g",
+						desc = "Find Text",
+						action = ":lua Snacks.dashboard.pick('live_grep')",
+					},
+					{
+						icon = " ",
+						key = "c",
+						desc = "Config",
+						action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+					},
+					{
+						icon = "󰒲 ",
+						key = "L",
+						desc = "Lazy",
+						action = ":Lazy",
+						enabled = package.loaded.lazy ~= nil,
+					},
+					{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
+				},
+			},
 			sections = {
 				{ section = "header" },
 				{ icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
