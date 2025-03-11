@@ -11,9 +11,16 @@ return {
 						"catppuccin-latte",
 					},
 				},
+				{
+					"folke/tokyonight.nvim",
+					blacklist = {
+						"tokyonight-day",
+					},
+				},
 				"olivercederborg/poimandres.nvim",
 				"slugbyte/lackluster.nvim",
 				"wtfox/jellybeans.nvim",
+				"ilof2/posterpole.nvim",
 			})
 		end,
 	},
