@@ -16,11 +16,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-local capabilities = {}
-
 return {
 	{
-		"williamboman/mason.nvim",
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+		},
+		event = { "BufReadPost", "BufNewFile" },
+		cmd = { "LspInfo", "LspInstall", "LspUninstall" },
 		config = function()
 			require("mason").setup({
 				ui = {
@@ -31,16 +35,8 @@ return {
 					},
 				},
 			})
-		end,
-	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		dependencies = {
-			"neovim/nvim-lspconfig",
-			"saghen/blink.cmp",
-		},
-		config = function()
-			capabilities = vim.tbl_deep_extend(
+
+			local capabilities = vim.tbl_deep_extend(
 				"force",
 				vim.lsp.protocol.make_client_capabilities(),
 				require("lspconfig").util.default_config.capabilities,
@@ -129,7 +125,39 @@ return {
 		end,
 	},
 	{
+		"saghen/blink.cmp",
+		dependencies = {
+			"rafamadriz/friendly-snippets",
+		},
+		version = "v0.*",
+		lazy = true,
+		event = { "BufReadPost", "BufNewFile", "CmdlineEnter" },
+		opts = {
+			keymap = {
+				["<C-f>"] = { "show" },
+				["<S-CR>"] = { "accept" },
+				["<S-Tab>"] = { "select_prev" },
+				["<Tab>"] = { "select_next" },
+				["<C-k>"] = { "scroll_documentation_up" },
+				["<C-j>"] = { "scroll_documentation_down" },
+			},
+			appearance = {
+				use_nvim_cmp_as_default = true,
+				nerd_font_variant = "mono",
+			},
+			signature = { enabled = true },
+			cmdline = {
+				keymap = {
+					["<S-CR>"] = { "show", "accept" },
+				},
+				completion = { menu = { auto_show = true } },
+			},
+		},
+	},
+	{
 		"stevearc/conform.nvim",
+		lazy = true,
+		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			require("conform").setup({
 				formatters_by_ft = {
@@ -159,34 +187,5 @@ return {
 
 			require("conform").formatters.yamlfmt = {}
 		end,
-	},
-	{
-		"saghen/blink.cmp",
-		lazy = false,
-		dependencies = {
-			"rafamadriz/friendly-snippets",
-		},
-		version = "v0.*",
-		opts = {
-			keymap = {
-				["<C-f>"] = { "show" },
-				["<S-CR>"] = { "accept" },
-				["<S-Tab>"] = { "select_prev" },
-				["<Tab>"] = { "select_next" },
-				["<C-k>"] = { "scroll_documentation_up" },
-				["<C-j>"] = { "scroll_documentation_down" },
-			},
-			appearance = {
-				use_nvim_cmp_as_default = true,
-				nerd_font_variant = "mono",
-			},
-			signature = { enabled = true },
-			cmdline = {
-				keymap = {
-					["<S-CR>"] = { "show", "accept" },
-				},
-				completion = { menu = { auto_show = true } },
-			},
-		},
 	},
 }

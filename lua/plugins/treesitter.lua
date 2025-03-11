@@ -11,6 +11,8 @@ return {
 			opts = { mode = "cursor", max_lines = 3 },
 		},
 	},
+	event = { "BufReadPost", "BufNewFile" },
+	cmd = { "TSInstall", "TSUninstall", "TSInstallSync" },
 	opts = {
 		ensure_installed = {
 			"go",
