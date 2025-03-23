@@ -21,6 +21,7 @@ return {
 				"slugbyte/lackluster.nvim",
 				"wtfox/jellybeans.nvim",
 				"ilof2/posterpole.nvim",
+				"vague2k/vague.nvim",
 			})
 		end,
 	},
