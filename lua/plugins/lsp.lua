@@ -56,9 +56,9 @@ return {
 					"lua_ls",
 					"hyprls",
 					"bashls",
-					"sqls",
 					"cssls",
 					"yamlls",
+					"sqls",
 				},
 				handlers = {
 					function(server_name)
@@ -120,6 +120,15 @@ return {
 							end,
 						})
 					end,
+					["sqls"] = function()
+						require("lspconfig").sqls.setup({
+							capabilities = capabilities,
+							on_attach = function(client)
+								client.server_capabilities.documentFormattingProvider = false
+								client.server_capabilities.documentFormattingRangeProvider = false
+							end,
+						})
+					end,
 				},
 			})
 		end,
@@ -136,8 +145,8 @@ return {
 			keymap = {
 				["<C-f>"] = { "show" },
 				["<S-CR>"] = { "accept" },
-				["<S-Tab>"] = { "select_prev" },
-				["<Tab>"] = { "select_next" },
+				["<Tab>"] = { "select_next", "snippet_forward" },
+				["<S-Tab>"] = { "select_prev", "snippet_backward" },
 				["<C-k>"] = { "scroll_documentation_up" },
 				["<C-j>"] = { "scroll_documentation_down" },
 			},
