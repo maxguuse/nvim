@@ -1,6 +1,6 @@
-vim.api.nvim_create_augroup("ggoose", { clear = true })
+local ggoose = vim.api.nvim_create_augroup("ggoose", { clear = true })
 vim.api.nvim_create_autocmd("BufEnter", {
-	group = "ggoose",
+	group = ggoose,
 	callback = function()
 		local filename = os.getenv("NVIM_LAST_FILENAME")
 		if filename == nil then
@@ -12,9 +12,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	end,
 })
 
-vim.api.nvim_create_augroup("KittyStyles", { clear = true })
+local kittyStyles = vim.api.nvim_create_augroup("KittyStyles", { clear = true })
 vim.api.nvim_create_autocmd("UIEnter", {
-	group = "KittyStyles",
+	group = kittyStyles,
 	callback = function()
 		local sock = os.getenv("KITTY_LISTEN_ON")
 		if sock == nil then
@@ -26,7 +26,7 @@ vim.api.nvim_create_autocmd("UIEnter", {
 	end,
 })
 vim.api.nvim_create_autocmd("UILeave", {
-	group = "KittyStyles",
+	group = kittyStyles,
 	callback = function()
 		local sock = os.getenv("KITTY_LISTEN_ON")
 		if sock == nil then
@@ -39,21 +39,5 @@ vim.api.nvim_create_autocmd("UILeave", {
 
 		vim.system({ "kitty", "@", "--to", sock, "set-colors", color })
 		vim.system({ "kitty", "@", "--to", sock, "set-spacing", "padding=default" })
-	end,
-})
-vim.api.nvim_create_autocmd("ColorScheme", {
-	group = "KittyStyles",
-	callback = function()
-		local sock = os.getenv("KITTY_LISTEN_ON")
-		if sock == nil then
-			error("KITTY_LISTEN_ON not specified")
-			return
-		end
-
-		local hl_id = vim.api.nvim_get_hl_id_by_name("Normal")
-		local rgb = vim.api.nvim_get_hl(0, { id = hl_id })
-		local color = string.format("background=#%06x", rgb.bg)
-
-		vim.system({ "kitty", "@", "--to", sock, "set-colors", color })
 	end,
 })
