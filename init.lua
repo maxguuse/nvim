@@ -25,6 +25,9 @@ vim.g.netrw_winsize = 25
 vim.g.omni_sql_no_default_maps = 1
 
 require("settings")
+require("autocmd")
+require("keys.main")
+require("lsp")
 
 require("lazy").setup({
 	spec = {
@@ -32,6 +35,3 @@ require("lazy").setup({
 	},
 	checker = { enabled = true },
 })
-
-require("autocmd")
-require("keys.main")
