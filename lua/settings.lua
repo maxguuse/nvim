@@ -44,8 +44,9 @@ opt.smartindent = true
 
 opt.cmdheight = 0
 
--- For ufo.nvim purposes
 vim.o.foldenable = true
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.o.foldcolumn = "0"
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
