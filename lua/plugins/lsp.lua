@@ -138,7 +138,7 @@ return {
 		dependencies = {
 			"rafamadriz/friendly-snippets",
 		},
-		version = "v0.*",
+		version = "v1.*",
 		lazy = true,
 		event = { "BufReadPost", "BufNewFile", "CmdlineEnter" },
 		opts = {
