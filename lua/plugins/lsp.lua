@@ -1,5 +1,11 @@
 return {
 	{
+		"j-hui/fidget.nvim",
+		lazy = true,
+		event = { "BufReadPost", "BufNewFile" },
+		opts = {},
+	},
+	{
 		"saghen/blink.cmp",
 		dependencies = {
 			"rafamadriz/friendly-snippets",
