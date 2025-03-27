@@ -61,7 +61,7 @@ return {
 		keys = {
 			{
 				"<leader>mf",
-				"<cmd>lua =require'mini.files'.open()<CR>",
+				"<cmd>lua =require'mini.files'.open()<CR><CR>",
 				"Mini Files",
 			},
 		},
