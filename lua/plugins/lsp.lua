@@ -24,7 +24,7 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 		},
 		event = { "BufReadPre", "BufNewFile" },
-		cmd = { "LspInfo", "LspInstall", "LspUninstall" },
+		cmd = { "LspInfo", "LspInstall", "LspUninstall", "Mason" },
 		config = function()
 			require("mason").setup({
 				ui = {
