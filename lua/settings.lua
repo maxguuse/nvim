@@ -31,6 +31,7 @@ opt.timeoutlen = 2000
 
 opt.list = true
 opt.listchars = { tab = "→ ", trail = "·", nbsp = "␣" }
+opt.fillchars = { eob = " ", fold = " " }
 
 opt.autochdir = true
 
@@ -44,12 +45,7 @@ opt.smartindent = true
 
 opt.cmdheight = 0
 
-vim.o.foldenable = true
-vim.o.foldmethod = "expr"
-vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.o.foldcolumn = "0"
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = 99
+require("fold")
 
 vim.schedule(function()
 	opt.clipboard = "unnamedplus"
