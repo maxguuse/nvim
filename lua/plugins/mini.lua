@@ -68,9 +68,6 @@ return {
 		config = function()
 			require("mini.icons").setup()
 
-			require("mini.splitjoin").setup()
-			require("mini.cursorword").setup()
-
 			require("mini.pairs").setup()
 			require("mini.surround").setup()
 
