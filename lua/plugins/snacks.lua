@@ -61,13 +61,26 @@ return {
 		dashboard = {
 			preset = {
 				keys = {
-					{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
 					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+					{
+						icon = " ",
+						key = "f",
+						desc = "Find File",
+						action = function()
+							require("snacks").picker.files({
+								cwd = get_cwd(),
+							})
+						end,
+					},
 					{
 						icon = " ",
 						key = "g",
 						desc = "Find Text",
-						action = ":lua Snacks.dashboard.pick('live_grep')",
+						action = function()
+							require("snacks").picker.grep({
+								cwd = get_cwd(),
+							})
+						end,
 					},
 					{
 						icon = " ",
