@@ -13,7 +13,5 @@
   "nvim-treesitter": { "branch": "master", "commit": "a3315b8c7f0f1ddaa30b24bcc0af0d31024dfb6a" },
   "nvim-treesitter-context": { "branch": "master", "commit": "93b29a32d5f4be10e39226c6b796f28d68a8b483" },
   "snacks.nvim": { "branch": "main", "commit": "bc0630e43be5699bb94dadc302c0d21615421d93" },
-  "symbols.nvim": { "branch": "main", "commit": "516af58f1cb77b7888a9fa276e495967bfea0409" },
   "themify.nvim": { "branch": "main", "commit": "092ba515e4d0d96a91494ef9cbed7d0517b2bd80" },
-  "trouble.nvim": { "branch": "main", "commit": "85bedb7eb7fa331a2ccbecb9202d8abba64d37b3" },
 }

@@ -59,6 +59,16 @@ return {
 			":lua Snacks.picker.lazy()<CR>",
 			desc = "Search for Plugin Spec",
 		},
+		{
+			"<leader>cs",
+			":lua Snacks.picker.lsp_symbols()<CR>",
+			desc = "Symbols",
+		},
+		{
+			"<leader>cx",
+			":lua Snacks.picker.diagnostics()<CR>",
+			desc = "Diagnostics",
+		},
 	},
 	opts = {
 		dashboard = {
