@@ -16,5 +16,4 @@
   "symbols.nvim": { "branch": "main", "commit": "516af58f1cb77b7888a9fa276e495967bfea0409" },
   "themify.nvim": { "branch": "main", "commit": "092ba515e4d0d96a91494ef9cbed7d0517b2bd80" },
   "trouble.nvim": { "branch": "main", "commit": "85bedb7eb7fa331a2ccbecb9202d8abba64d37b3" },
-  "vim-wakatime": { "branch": "master", "commit": "e46d7c4f98ee0f40782008dd60cb2a79c377fb1d" }
 }
