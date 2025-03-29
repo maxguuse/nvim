@@ -26,7 +26,7 @@ vim.g.omni_sql_no_default_maps = 1
 
 require("settings")
 require("autocmd")
-require("keys.main")
+require("keys")
 require("lsp")
 
 require("lazy").setup({
