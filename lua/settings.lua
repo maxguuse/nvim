@@ -4,7 +4,6 @@ opt.autoread = true
 opt.swapfile = false
 
 opt.cursorline = true
-opt.cursorcolumn = true
 
 opt.number = true
 opt.relativenumber = true
