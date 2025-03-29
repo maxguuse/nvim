@@ -1,5 +1,36 @@
+local ggoose_lsp = vim.api.nvim_create_augroup("ggoose_lsp", { clear = true })
+
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+	group = ggoose_lsp,
+	callback = function()
+		vim.lsp.config("*", {
+			capabilities = {
+				textDocument = {
+					foldingRange = {
+						dynamicRegistration = false,
+						lineFoldingOnly = true,
+					},
+					semanticTokens = {
+						multilineTokenSupport = true,
+					},
+				},
+			},
+		})
+
+		vim.lsp.enable({
+			"gopls",
+			"sqls",
+			"luals",
+			"bashls",
+			"jsonls",
+			"cssls",
+			"yamlls",
+		})
+	end,
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
-	desc = "LSP actions",
+	group = ggoose_lsp,
 	callback = function(event)
 		local opts = { buffer = event.buf }
 
@@ -17,6 +48,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
+	group = ggoose_lsp,
 	callback = function(args)
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
 		if client ~= nil and client:supports_method("textDocument/foldingRange") then
@@ -24,28 +56,4 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
 		end
 	end,
-})
-
-vim.lsp.config("*", {
-	capabilities = {
-		textDocument = {
-			foldingRange = {
-				dynamicRegistration = false,
-				lineFoldingOnly = true,
-			},
-			semanticTokens = {
-				multilineTokenSupport = true,
-			},
-		},
-	},
-})
-
-vim.lsp.enable({
-	"gopls",
-	"sqls",
-	"luals",
-	"bashls",
-	"jsonls",
-	"cssls",
-	"yamlls",
 })
