@@ -23,12 +23,16 @@ local function statusline_filename()
 	return "%f%m"
 end
 
-local function statusline_arrow()
-	local arrow = require("arrow.statusline")
-	local is_saved = arrow.is_on_arrow_file()
+local function statusline_arglist()
+	local arglist = vim.fn.argv()
+	local file = vim.fn.expand("%")
 
-	if is_saved then
-		return string.format("󱡁%s", is_saved)
+	local is_present = vim.fn.index(arglist, file)
+
+	local current = vim.fn.argidx()
+
+	if is_present ~= -1 then
+		return string.format("󱡁%s", current)
 	end
 end
 
@@ -39,12 +43,12 @@ local function active_statusline()
 	local git = MiniStatusline.section_git({ trunc_width = 40 })
 	local filename = statusline_filename()
 	local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
-	local arrow = statusline_arrow()
+	local arglist = statusline_arglist()
 
 	return MiniStatusline.combine_groups({
 		{ strings = { mode } },
 		{ strings = { git } },
-		{ strings = { filename, arrow } },
+		{ strings = { filename, arglist } },
 		{ strings = { diagnostics } },
 	})
 end

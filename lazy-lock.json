@@ -1,5 +1,4 @@
 {
-  "arrow.nvim": { "branch": "master", "commit": "4222ecb3dc3f25d3bc6ec348b1fc94b8e1d2c312" },
   "blink.cmp": { "branch": "main", "commit": "49f211fe5d729df53df4c042d7c3464cf47d199e" },
   "cloak.nvim": { "branch": "main", "commit": "648aca6d33ec011dc3166e7af3b38820d01a71e4" },
   "conform.nvim": { "branch": "master", "commit": "f9ef25a7ef00267b7d13bfc00b0dea22d78702d5" },
