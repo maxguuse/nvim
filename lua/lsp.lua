@@ -2,6 +2,7 @@ local ggoose_lsp = vim.api.nvim_create_augroup("ggoose_lsp", { clear = true })
 
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
 	group = ggoose_lsp,
+	once = true,
 	callback = function()
 		vim.lsp.config("*", {
 			capabilities = {
