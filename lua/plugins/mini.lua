@@ -71,6 +71,8 @@ return {
 		},
 		config = function()
 			require("mini.icons").setup()
+			require("mini.notify").setup()
+			require("mini.misc").setup_termbg_sync()
 
 			require("mini.pairs").setup()
 			require("mini.surround").setup()
@@ -91,17 +93,11 @@ return {
 			require("mini.hipatterns").setup({
 				highlighters = {
 					fixme = { pattern = "%f[%w]()FIXME()%f[%W]", group = "MiniHipatternsFixme" },
-					hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
 					todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
-					note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
 
 					hex_color = require("mini.hipatterns").gen_highlighter.hex_color(),
 				},
 			})
-
-			require("mini.notify").setup()
-
-			require("mini.misc").setup_termbg_sync()
 		end,
 	},
 }
