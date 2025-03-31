@@ -34,10 +34,6 @@ vim.api.nvim_create_autocmd("UILeave", {
 			return
 		end
 
-		local obj = vim.system({ "awk", "/^background/ {print $2}", "/home/ggoose/.config/kitty/theme.conf" }):wait()
-		local color = string.format("background=%s", obj.stdout)
-
-		vim.system({ "kitty", "@", "--to", sock, "set-colors", color })
 		vim.system({ "kitty", "@", "--to", sock, "set-spacing", "padding=default" })
 	end,
 })
