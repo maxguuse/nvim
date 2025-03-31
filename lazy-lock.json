@@ -4,7 +4,6 @@
   "conform.nvim": { "branch": "master", "commit": "f9ef25a7ef00267b7d13bfc00b0dea22d78702d5" },
   "friendly-snippets": { "branch": "main", "commit": "efff286dd74c22f731cdec26a70b46e5b203c619" },
   "go.nvim": { "branch": "master", "commit": "0d426e87227dd14584881ecc595c173121456111" },
-  "kitty-scrollback.nvim": { "branch": "main", "commit": "68ef4467bc1c30055bb772fb5e7b94db394f5c62" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "mini.nvim": { "branch": "main", "commit": "4630b9cb783b280fa0fd94e8245d8fb06023f3ba" },
   "nvim-treesitter": { "branch": "master", "commit": "a3315b8c7f0f1ddaa30b24bcc0af0d31024dfb6a" },
