@@ -99,6 +99,8 @@ return {
 				},
 			})
 
+			require("mini.notify").setup()
+
 			require("mini.misc").setup_termbg_sync()
 		end,
 	},
