@@ -24,15 +24,10 @@ local function statusline_filename()
 end
 
 local function statusline_arglist()
-	local arglist = vim.fn.argv()
-	local file = vim.fn.expand("%")
+	local info = require("core.arglist").info()
 
-	local is_present = vim.fn.index(arglist, file)
-
-	local current = vim.fn.argidx()
-
-	if is_present ~= -1 then
-		return string.format("󱡁%s", current)
+	if info.index ~= -1 then
+		return string.format("󱡁%s", info.index)
 	end
 end
 
