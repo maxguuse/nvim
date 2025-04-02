@@ -6,33 +6,8 @@ vim.api.nvim_create_autocmd("UILeave", {
 		if last_dir_file == nil then
 			return
 		end
+
 		local current_dir = vim.fn.getcwd()
 		vim.fn.writefile({ current_dir }, last_dir_file)
-	end,
-})
-
-local kittyStyles = vim.api.nvim_create_augroup("KittyStyles", { clear = true })
-vim.api.nvim_create_autocmd("UIEnter", {
-	group = kittyStyles,
-	callback = function()
-		local sock = os.getenv("KITTY_LISTEN_ON")
-		if sock == nil then
-			error("KITTY_LISTEN_ON not specified")
-			return
-		end
-
-		vim.system({ "kitty", "@", "--to", sock, "set-spacing", "padding=0" })
-	end,
-})
-vim.api.nvim_create_autocmd("UILeave", {
-	group = kittyStyles,
-	callback = function()
-		local sock = os.getenv("KITTY_LISTEN_ON")
-		if sock == nil then
-			error("KITTY_LISTEN_ON not specified")
-			return
-		end
-
-		vim.system({ "kitty", "@", "--to", sock, "set-spacing", "padding=default" })
 	end,
 })
