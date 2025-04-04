@@ -66,7 +66,6 @@ return {
 		},
 		config = function()
 			require("mini.icons").setup()
-			require("mini.notify").setup()
 			require("mini.misc").setup_termbg_sync()
 
 			require("mini.pairs").setup()
@@ -97,6 +96,9 @@ return {
 			require("mini.sessions").setup({
 				directory = "",
 			})
+
+			require("mini.notify").setup()
+			vim.notify = require("mini.notify").make_notify()
 		end,
 	},
 }
