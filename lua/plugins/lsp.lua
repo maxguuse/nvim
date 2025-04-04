@@ -14,9 +14,9 @@ return {
 				["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
 				["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
 
-				["<S-d>"] = { "show_documentation", "hide_documentation" },
-				["<S-k>"] = { "scroll_documentation_up" },
-				["<S-j>"] = { "scroll_documentation_down" },
+				["<C-d>"] = { "show_documentation", "hide_documentation" },
+				["<C-k>"] = { "scroll_documentation_up" },
+				["<C-j>"] = { "scroll_documentation_down" },
 
 				["<M-s>"] = { "show_signature", "hide_signature" },
 			},
