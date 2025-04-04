@@ -93,6 +93,10 @@ return {
 					hex_color = require("mini.hipatterns").gen_highlighter.hex_color(),
 				},
 			})
+
+			require("mini.sessions").setup({
+				directory = "",
+			})
 		end,
 	},
 }

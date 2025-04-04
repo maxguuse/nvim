@@ -14,6 +14,8 @@ local function get_cwd()
 	return vim.loop.cwd()
 end
 
+local ROOT = ""
+
 return {
 	"folke/snacks.nvim",
 	lazy = false,
@@ -63,6 +65,18 @@ return {
 				keys = {
 					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
 					{
+						icon = " ",
+						key = "s",
+						desc = "Restore Session",
+						enabled = function()
+							ROOT = require("core.sessions").find_session_root()
+							return ROOT ~= ""
+						end,
+						action = function()
+							require("core.sessions").source(ROOT .. "/Session.vim")
+						end,
+					},
+					{
 						icon = " ",
 						key = "f",
 						desc = "Find File",
@@ -86,7 +100,11 @@ return {
 						icon = " ",
 						key = "c",
 						desc = "Config",
-						action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+						action = function()
+							require("snacks").picker.files({
+								cwd = vim.fn.stdpath("config"),
+							})
+						end,
 					},
 					{
 						icon = "󰒲 ",

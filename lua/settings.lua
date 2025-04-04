@@ -44,6 +44,8 @@ opt.smartindent = true
 
 opt.cmdheight = 0
 
+opt.sessionoptions = "buffers,curdir,help,terminal,winsize"
+
 require("fold")
 
 vim.schedule(function()
