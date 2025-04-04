@@ -9,24 +9,29 @@ return {
 		event = { "BufReadPost", "BufNewFile", "CmdlineEnter" },
 		opts = {
 			keymap = {
-				["<C-f>"] = { "show" },
-				["<S-CR>"] = { "accept" },
-				["<Tab>"] = { "select_next", "snippet_forward" },
-				["<S-Tab>"] = { "select_prev", "snippet_backward" },
-				["<C-k>"] = { "scroll_documentation_up" },
-				["<C-j>"] = { "scroll_documentation_down" },
+				preset = "none",
+				["<S-CR>"] = { "show", "accept" },
+				["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+				["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+
+				["<S-d>"] = { "show_documentation", "hide_documentation" },
+				["<S-k>"] = { "scroll_documentation_up" },
+				["<S-j>"] = { "scroll_documentation_down" },
+
+				["<M-s>"] = { "show_signature", "hide_signature" },
 			},
+
+			cmdline = {
+				keymap = { preset = "inherit" },
+				completion = { menu = { auto_show = true } },
+			},
+
 			appearance = {
 				use_nvim_cmp_as_default = true,
 				nerd_font_variant = "mono",
 			},
+
 			signature = { enabled = true },
-			cmdline = {
-				keymap = {
-					["<S-CR>"] = { "show", "accept" },
-				},
-				completion = { menu = { auto_show = true } },
-			},
 		},
 	},
 	{
