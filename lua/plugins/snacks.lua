@@ -62,6 +62,17 @@ return {
 	opts = {
 		dashboard = {
 			preset = {
+				header = [[
+  █████▒██▀███  ▓█████ ▄▄▄       ██ ▄█▀▓██   ██▓
+▓██   ▒▓██ ▒ ██▒▓█   ▀▒████▄     ██▄█▒  ▒██  ██▒
+▒████ ░▓██ ░▄█ ▒▒███  ▒██  ▀█▄  ▓███▄░   ▒██ ██░
+░▓█▒  ░▒██▀▀█▄  ▒▓█  ▄░██▄▄▄▄██ ▓██ █▄   ░ ▐██▓░
+░▒█░   ░██▓ ▒██▒░▒████▒▓█   ▓██▒▒██▒ █▄  ░ ██▒▓░
+ ▒ ░   ░ ▒▓ ░▒▓░░░ ▒░ ░▒▒   ▓▒█░▒ ▒▒ ▓▒   ██▒▒▒ 
+ ░       ░▒ ░ ▒░ ░ ░  ░ ▒   ▒▒ ░░ ░▒ ▒░ ▓██ ░▒░ 
+ ░ ░     ░░   ░    ░    ░   ▒   ░ ░░ ░  ▒ ▒ ░░  
+          ░        ░  ░     ░  ░░  ░    ░ ░     
+                                        ░ ░     ]],
 				keys = {
 					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
 					{
@@ -118,9 +129,16 @@ return {
 			},
 			sections = {
 				{ section = "header" },
-				{ icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
-				{ icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
-				{ icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+				{ section = "keys", gap = 1, padding = 1 },
+				{
+					pane = 2,
+					section = "terminal",
+					cmd = "chafa ~/Pictures/Wallpapers/smoking.jpg --format symbols --symbols vhalf --size 60x50; sleep .1",
+					height = 13,
+					padding = 1,
+				},
+				{ pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+				{ pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
 				{ section = "startup" },
 			},
 		},
