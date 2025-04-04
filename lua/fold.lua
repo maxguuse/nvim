@@ -1,12 +1,4 @@
 local ggoose_fold = vim.api.nvim_create_augroup("ggoose_fold", { clear = true })
-vim.api.nvim_create_autocmd("ColorScheme", {
-	group = ggoose_fold,
-	callback = function()
-		vim.api.nvim_set_hl(0, "Folded", { link = "Normal" })
-		vim.api.nvim_set_hl(0, "FoldColumn", { link = "Normal" })
-	end,
-})
-
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = ggoose_fold,
 	callback = function(args)
@@ -26,7 +18,7 @@ function _G.custom_fold_text()
 	local suffix = (" 󰁂 %d "):format(line_count)
 
 	return {
-		{ line, "Folded" },
+		{ line, "Comment" },
 		{ suffix, "MoreMsg" },
 	}
 end
