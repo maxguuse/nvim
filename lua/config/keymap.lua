@@ -20,10 +20,10 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Jump down by half screen and k
 vim.keymap.set("n", "n", "nzzzv", { desc = "Search next and keep cursor in the middle" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Search previous and keep cursor in the middle" })
 
-vim.keymap.set("n", "<leader>d", "\"_d", { desc = "Delete to void register" })
-vim.keymap.set("v", "<leader>d", "\"_d", { desc = "Delete to void register" })
+vim.keymap.set("n", "<leader>d", '"_d', { desc = "Delete to void register" })
+vim.keymap.set("v", "<leader>d", '"_d', { desc = "Delete to void register" })
 
-vim.keymap.set("x", "<leader>p", "\"_dP", { desc = "Paste without replacing clipboard content" })
+vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without replacing clipboard content" })
 
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Append line below to current line and keep cursor in place" })
 

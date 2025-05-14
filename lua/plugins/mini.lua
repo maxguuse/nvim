@@ -30,9 +30,9 @@ return {
     },
     {
       "<leader>cs",
-      "<cmd>Pick lsp scope=\"document_symbol\"<CR>",
+      '<cmd>Pick lsp scope="document_symbol"<CR>',
       "Symbols",
-    }
+    },
   },
   config = function()
     require("mini.icons").setup()
@@ -42,8 +42,8 @@ return {
 
     require("mini.pairs").setup()
     require("mini.surround").setup()
-    require('mini.jump').setup()
-    require('mini.splitjoin').setup()
+    require("mini.jump").setup()
+    require("mini.splitjoin").setup()
 
     require("mini.git").setup()
     require("mini.statusline").setup(require("config.mini.statusline"))
@@ -51,7 +51,7 @@ return {
     require("mini.files").setup(require("config.mini.files"))
     require("mini.pick").setup(require("config.mini.pick"))
 
-    require('mini.notify').setup(require("config.mini.notify"))
-    vim.notify = require('mini.notify').make_notify()
+    require("mini.notify").setup(require("config.mini.notify"))
+    vim.notify = require("mini.notify").make_notify()
   end,
 }
