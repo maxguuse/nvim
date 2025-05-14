@@ -4,6 +4,7 @@ vim.keymap.set("n", "<leader>ll", ":Lazy<CR>", { desc = "Lazy" })
 --- Some convenient stuff ------------------------------------------------------------------------------------
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Insert mode in terminal" })
 vim.keymap.set("n", "<leader>s", "<cmd>set hlsearch!<CR>", { desc = "Toggle search highlight" })
+vim.keymap.set({ "n", "x" }, "s", "<Nop>", { desc = "Disabled for the sake of mini.surround" })
 
 --- Arglist manipulation -------------------------------------------------------------------------------------
 vim.keymap.set("n", "<C-l>", require("core.arglist").next, { desc = "Next argument (wrap)" })
