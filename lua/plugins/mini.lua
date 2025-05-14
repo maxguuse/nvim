@@ -52,6 +52,5 @@ return {
     require("mini.pick").setup(require("config.mini.pick"))
 
     require("mini.notify").setup(require("config.mini.notify"))
-    vim.notify = require("mini.notify").make_notify()
   end,
 }
