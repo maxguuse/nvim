@@ -19,7 +19,7 @@ vim.o.undofile = true
 vim.o.backup = false
 vim.o.writebackup = false
 
-vim.o.sessionoptions = "buffers,curdir,help,terminal,winsize"
+vim.o.sessionoptions = "buffers,curdir,folds,help,terminal,winsize"
 vim.o.clipboard = "unnamedplus"
 
 vim.o.updatetime = 300
@@ -27,7 +27,7 @@ vim.o.timeoutlen = 2000
 
 --- UI --------------------------------------------------------------------------------
 vim.o.cursorline = true
-vim.o.cursorlineopt = 'screenline,number'
+vim.o.cursorlineopt = "screenline,number"
 
 vim.o.scrolloff = 5
 vim.o.cmdheight = 0
@@ -63,10 +63,10 @@ vim.o.shiftwidth = 2
 vim.o.tabstop = 2
 
 vim.o.expandtab = true
-vim.o.formatoptions = 'rqnl1j'
-vim.o.virtualedit = 'block'
+vim.o.formatoptions = "rqnl1j"
+vim.o.virtualedit = "block"
 vim.o.showmatch = true
-vim.o.iskeyword = '@,48-57,_,192-255,-'
+vim.o.iskeyword = "@,48-57,_,192-255,-"
 
 --- SEARCHING -------------------------------------------------------------------------
 vim.o.inccommand = "split"

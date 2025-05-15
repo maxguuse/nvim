@@ -3,9 +3,7 @@ vim.api.nvim_create_autocmd("UILeave", {
   group = ggoose,
   callback = function()
     local last_dir_file = os.getenv("NVIM_LAST_FILENAME")
-    if last_dir_file == nil then
-      return
-    end
+    if last_dir_file == nil then return end
 
     local current_dir = vim.fn.getcwd()
     vim.fn.writefile({ current_dir }, last_dir_file)
@@ -50,5 +48,31 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gdf", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
     vim.keymap.set("n", "gdc", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
     vim.keymap.set("n", "gdt", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
+  end,
+})
+
+--- Session management ----------------------------
+local session = require("core.session")
+-- Auto-save on exit
+vim.api.nvim_create_autocmd("VimLeavePre", {
+  group = ggoose,
+  callback = require("core.session").write_session,
+})
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  group = ggoose,
+  callback = function()
+    vim.schedule(function()
+      local read = session.read_session()
+
+      if read then return end
+
+      if not read then
+        session.write_session()
+
+        vim.cmd('Pick files cwd=require("core.util").GetProjectRoot()')
+        return
+      end
+    end)
   end,
 })
