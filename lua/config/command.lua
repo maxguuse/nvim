@@ -13,7 +13,7 @@ vim.api.nvim_create_user_command("RestoreSession", function(args)
     return
   end
 
-  vim.notify("No Session.vim file found")
+  vim.notify("No Session.vim file found", vim.log.levels.INFO)
 end, {
   bang = true,
   desc = "Try to find Session.vim at project root and restore it, call with bang to force create new Session.vim",

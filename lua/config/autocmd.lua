@@ -62,6 +62,7 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
 vim.api.nvim_create_autocmd("VimEnter", {
   group = ggoose,
   callback = function()
+    if vim.fn.argc() ~= 0 then return end
     vim.schedule(function()
       local read = session.read_session()
 

@@ -1,13 +1,20 @@
 local M = {}
 
 M.write_session = function()
-  local session_file
+  local util = require("core.util")
+
+  local project_root, session_file
 
   if vim.v.this_session ~= "" then
     session_file = vim.v.this_session
   else
-    local project_root = require("core.util").GetProjectRoot()
+    project_root = util.GetProjectRoot()
     session_file = project_root .. "/Session.vim"
+  end
+
+  if util.IsProtectedDir(project_root) then
+    vim.notify("Session cannot be saved to protected directory: " .. project_root, vim.log.levels.WARN)
+    return
   end
 
   vim.cmd("mksession! " .. vim.fn.fnameescape(session_file))
