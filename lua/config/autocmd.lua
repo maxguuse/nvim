@@ -51,7 +51,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
---- Session management ----------------------------
+--- Session management -----------------------------------------------------------------
 local session = require("core.session")
 -- Auto-save on exit
 vim.api.nvim_create_autocmd("VimLeavePre", {
@@ -74,5 +74,32 @@ vim.api.nvim_create_autocmd("VimEnter", {
         return
       end
     end)
+  end,
+})
+
+--- Kitty styling ----------------------------------------------------------------------
+vim.api.nvim_create_autocmd("UIEnter", {
+  group = ggoose,
+  callback = function()
+    local sock = vim.env.KITTY_LISTEN_ON
+    if sock == nil then
+      error("KITTY_LISTEN_ON not specified")
+      return
+    end
+
+    vim.system({ "kitty", "@", "--to", sock, "set-spacing", "padding=0" })
+  end,
+})
+
+vim.api.nvim_create_autocmd("UILeave", {
+  group = ggoose,
+  callback = function()
+    local sock = vim.env.KITTY_LISTEN_ON
+    if sock == nil then
+      error("KITTY_LISTEN_ON not specified")
+      return
+    end
+
+    vim.system({ "kitty", "@", "--to", sock, "set-spacing", "padding=default" })
   end,
 })
