@@ -12,7 +12,7 @@ M.write_session = function()
     session_file = project_root .. "/Session.vim"
   end
 
-  if util.IsProtectedDir(project_root) then
+  if project_root and project_root ~= "" and util.IsProtectedDir(project_root) then
     vim.notify("Session cannot be saved to protected directory: " .. project_root, vim.log.levels.WARN)
     return
   end
