@@ -13,8 +13,8 @@ They are stored in `lua/core` directory. There's some docs about it for those of
 
 Implemented as simple as possible:
 - `<C-s>` -> Adds/removes current buffer to/from arglist
-- `<C-h>` -> Go to next buffer in arglist (wraps around arglist and goes to last element if current buffer is first in the arglist)
-- `<C-l>` -> Go to previous buffer in arglist (wraps around arglist and goes to first element if current buffer is last in the arglist) 
+- `<C-l>` -> Go to next buffer in arglist (wraps around arglist and goes to last element if current buffer is first in the arglist)
+- `<C-h>` -> Go to previous buffer in arglist (wraps around arglist and goes to first element if current buffer is last in the arglist) 
 - I also added `require("core.arglist").info()` function that aggregates some useful info about arglist, I personally use it to put current buffer index in arglist on the statusline.
 
 ### Session management
