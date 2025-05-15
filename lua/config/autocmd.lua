@@ -78,6 +78,19 @@ vim.api.nvim_create_autocmd("VimEnter", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  group = ggoose,
+  callback = function() vim.wo.wrap = true end,
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  group = ggoose,
+  callback = function()
+    if vim.bo.filetype ~= "markdown" then vim.wo.wrap = false end
+  end,
+})
+
 --- Kitty styling ----------------------------------------------------------------------
 vim.api.nvim_create_autocmd("UIEnter", {
   group = ggoose,
