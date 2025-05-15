@@ -6,7 +6,7 @@
   "go.nvim": { "branch": "master", "commit": "bca78924f47be69743eb66a44162b9389f506fb9" },
   "lackluster.nvim": { "branch": "main", "commit": "b247a6f51cb43e49f3f753f4a59553b698bf5438" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
-  "mini.nvim": { "branch": "main", "commit": "009435c6c3653d54bc62997ca6b2e8513bc52cf4" },
+  "mini.nvim": { "branch": "main", "commit": "8f0969dd976e4f0cb8e2898596fa2eab18ce676b" },
   "nvim-treesitter": { "branch": "master", "commit": "066fd6505377e3fd4aa219e61ce94c2b8bdb0b79" },
   "nvim-treesitter-context": { "branch": "master", "commit": "5c48b8ba1b0b7b25feb6e34e7eb293ea893aedc4" }
 }
