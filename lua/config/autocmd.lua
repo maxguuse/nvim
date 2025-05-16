@@ -38,22 +38,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
       },
     })
 
-    local gopls_cfg = require("go.lsp").config()
-
-    gopls_cfg.settings.gopls.hints = {
-      assignVariableTypes = false,
-      compositeLiteralFields = false,
-      compositeLiteralTypes = false,
-      constantValues = false,
-      functionTypeParameters = false,
-      parameterNames = false,
-      rangeVariableTypes = false,
-    }
-
-    vim.lsp.config.gopls = gopls_cfg
-
     vim.lsp.enable({
-      "gopls",
       "sqls",
       "luals",
       "bashls",
