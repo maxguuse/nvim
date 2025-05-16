@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd("UILeave", {
     if last_dir_file == nil then return end
 
     local current_dir = vim.fn.getcwd()
-    vim.fn.writefile({ current_dir }, last_dir_file)
+    if not require("core.util").IsProtectedDir(current_dir) then vim.fn.writefile({ current_dir }, last_dir_file) end
   end,
 })
 
