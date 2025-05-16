@@ -10,6 +10,16 @@ vim.api.nvim_create_autocmd("UILeave", {
   end,
 })
 
+vim.api.nvim_create_autocmd("UIEnter", {
+  group = ggoose,
+  once = true,
+  callback = function()
+    vim.schedule(
+      function() vim.notify("UIEnter: " .. require("lazy.stats").stats().times.UIEnter, vim.log.levels.INFO) end
+    )
+  end,
+})
+
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
   group = ggoose,
   once = true,
