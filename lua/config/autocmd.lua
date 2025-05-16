@@ -95,6 +95,16 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*",
+  callback = function(args)
+    local buftype = vim.api.nvim_get_option_value("buftype", { buf = args.buf })
+    if buftype ~= "" then return end
+
+    require("core.arglist").set_keymaps(args.buf)
+  end,
+})
+
 --- Kitty styling ----------------------------------------------------------------------
 vim.api.nvim_create_autocmd("UIEnter", {
   group = ggoose,

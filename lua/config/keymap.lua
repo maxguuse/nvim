@@ -10,11 +10,6 @@ vim.keymap.set({ "n", "x" }, "s", "<Nop>", { desc = "Disabled for the sake of mi
 vim.keymap.set("i", "<C-n>", "<Nop>", { desc = "Disabled default completion keymap" })
 vim.keymap.set("i", "<C-p>", "<Nop>", { desc = "Disabled default completion keymap" })
 
---- Arglist manipulation -------------------------------------------------------------------------------------
-vim.keymap.set("n", "<C-l>", require("core.arglist").next, { desc = "Next argument (wrap)" })
-vim.keymap.set("n", "<C-h>", require("core.arglist").prev, { desc = "Previous argument (wrap)" })
-vim.keymap.set("n", "<C-s>", require("core.arglist").toggle, { desc = "Toggle file in arglist" })
-
 --- Cool stuff (stolen from ThePrimeagen) --------------------------------------------------------------------
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection up with auto indent" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection down with auto indent" })
