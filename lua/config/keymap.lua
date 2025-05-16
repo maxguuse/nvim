@@ -6,6 +6,10 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Insert mode in terminal" }
 vim.keymap.set("n", "<leader>s", "<cmd>set hlsearch!<CR>", { desc = "Toggle search highlight" })
 vim.keymap.set({ "n", "x" }, "s", "<Nop>", { desc = "Disabled for the sake of mini.surround" })
 
+--- Disable default completion keymaps -----------------------------------------------------------------------
+vim.keymap.set("i", "<C-n>", "<Nop>", { desc = "Disabled default completion keymap" })
+vim.keymap.set("i", "<C-p>", "<Nop>", { desc = "Disabled default completion keymap" })
+
 --- Arglist manipulation -------------------------------------------------------------------------------------
 vim.keymap.set("n", "<C-l>", require("core.arglist").next, { desc = "Next argument (wrap)" })
 vim.keymap.set("n", "<C-h>", require("core.arglist").prev, { desc = "Previous argument (wrap)" })
