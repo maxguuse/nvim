@@ -9,6 +9,8 @@ function M.info()
 end
 
 local function ensure_valid_navigation(info)
+  if vim.bo.buftype ~= "" then return false end
+
   if info.index == -1 and info.count > 0 then
     vim.cmd("first")
     return false
@@ -20,9 +22,7 @@ end
 function M.next()
   local info = M.info()
 
-  if not ensure_valid_navigation(info) then
-    return
-  end
+  if not ensure_valid_navigation(info) then return end
 
   if info.index + 1 >= info.count then
     vim.cmd("first")
@@ -35,9 +35,7 @@ end
 function M.prev()
   local info = M.info()
 
-  if not ensure_valid_navigation(info) then
-    return
-  end
+  if not ensure_valid_navigation(info) then return end
 
   if info.index - 1 < 0 then
     vim.cmd("last")
@@ -49,6 +47,11 @@ end
 
 function M.toggle()
   local info = M.info()
+
+  if vim.bo.buftype ~= "" then
+    vim.notify("Cannot add '" .. vim.bo.buftype .. "' buffer to the arglist", vim.log.levels.WARN)
+    return
+  end
 
   if info.index ~= -1 then
     vim.cmd("argdelete " .. info.file .. " | redrawstatus")
