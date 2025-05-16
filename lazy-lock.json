@@ -8,5 +8,7 @@
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "mini.nvim": { "branch": "main", "commit": "8f0969dd976e4f0cb8e2898596fa2eab18ce676b" },
   "nvim-treesitter": { "branch": "master", "commit": "066fd6505377e3fd4aa219e61ce94c2b8bdb0b79" },
-  "nvim-treesitter-context": { "branch": "master", "commit": "5c48b8ba1b0b7b25feb6e34e7eb293ea893aedc4" }
+  "nvim-treesitter-context": { "branch": "master", "commit": "5c48b8ba1b0b7b25feb6e34e7eb293ea893aedc4" },
+  "nvim-ufo": { "branch": "main", "commit": "3c7a3570e9c9dc198a2ad4491b0b0e51c4d4ba08" },
+  "promise-async": { "branch": "main", "commit": "119e8961014c9bfaf1487bf3c2a393d254f337e2" }
 }
