@@ -69,7 +69,11 @@ vim.api.nvim_create_autocmd("VimEnter", {
       if read then return end
 
       if not read then
-        session.write_session()
+        local written = session.write_session()
+        if not written then
+          vim.cmd("Pick oldfiles")
+          return
+        end
 
         vim.cmd('Pick files cwd=require("core.util").GetProjectRoot()')
         return

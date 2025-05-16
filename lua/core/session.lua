@@ -14,7 +14,7 @@ M.write_session = function()
 
   if project_root and project_root ~= "" and util.IsProtectedDir(project_root) then
     vim.notify("Session cannot be saved to protected directory: " .. project_root, vim.log.levels.WARN)
-    return
+    return false
   end
 
   vim.cmd("mksession! " .. vim.fn.fnameescape(session_file))
