@@ -28,6 +28,20 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
       },
     })
 
+    local gopls_cfg = require("go.lsp").config()
+
+    gopls_cfg.settings.gopls.hints = {
+      assignVariableTypes = false,
+      compositeLiteralFields = false,
+      compositeLiteralTypes = false,
+      constantValues = false,
+      functionTypeParameters = false,
+      parameterNames = false,
+      rangeVariableTypes = false,
+    }
+
+    vim.lsp.config.gopls = gopls_cfg
+
     vim.lsp.enable({
       "gopls",
       "sqls",
@@ -71,7 +85,7 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
 
     if not has_normal_buffers then return end
 
-    require("core.session").write_session()
+    session.write_session()
   end,
 })
 
