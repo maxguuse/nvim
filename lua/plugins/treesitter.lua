@@ -5,7 +5,11 @@ return {
     {
       "nvim-treesitter/nvim-treesitter-context",
       enabled = true,
-      opts = { mode = "cursor", max_lines = 3 },
+      opts = {
+        mode = "cursor",
+        separator = "-",
+        max_lines = 3,
+      },
     },
   },
   event = { "BufReadPost", "BufNewFile" },
