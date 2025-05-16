@@ -33,6 +33,11 @@ return {
       '<cmd>Pick lsp scope="document_symbol"<CR>',
       "Symbols",
     },
+    {
+      "<leader>pp",
+      "<cmd>Pick projects<CR>",
+      "Projects",
+    },
   },
   config = function()
     require("mini.icons").setup(require("config.mini.icons"))

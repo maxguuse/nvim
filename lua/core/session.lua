@@ -1,16 +1,61 @@
 local M = {}
 
+local saved_sessions_file = vim.env.HOME .. "/.local/state/nvim/ggoose_sessions"
+
+function M.read_saved_sessions()
+  local lines = {}
+
+  local file = io.open(saved_sessions_file, "r")
+  if file then
+    for line in file:lines() do
+      table.insert(lines, line)
+    end
+  else
+    file = io.open(saved_sessions_file, "w")
+    if file then
+      file:close()
+      print("Created new file: " .. saved_sessions_file)
+    else
+      error("Failed to create file: " .. saved_sessions_file)
+    end
+  end
+
+  return lines
+end
+
+function M.save_session(session)
+  if session == "" then return end
+
+  local existing_sessions = M.read_saved_sessions()
+  if not M.contains(existing_sessions, session) then table.insert(existing_sessions, session) end
+
+  local file = io.open(saved_sessions_file, "w+")
+
+  if file then
+    for _, line in ipairs(existing_sessions) do
+      file:write(line .. "\n")
+    end
+    file:close()
+    return true
+  else
+    return false, "Could not open file for writing"
+  end
+end
+
+function M.contains(tbl, item)
+  for _, value in ipairs(tbl) do
+    if value == item then return true end
+  end
+  return false
+end
+
 M.write_session = function()
   local util = require("core.util")
 
   local project_root, session_file
 
-  if vim.v.this_session ~= "" then
-    session_file = vim.v.this_session
-  else
-    project_root = util.GetProjectRoot()
-    session_file = project_root .. "/Session.vim"
-  end
+  project_root = util.GetProjectRoot()
+  session_file = project_root .. "/Session.vim"
 
   if project_root and project_root ~= "" and util.IsProtectedDir(project_root) then
     vim.notify("Session cannot be saved to protected directory: " .. project_root, vim.log.levels.WARN)
@@ -18,7 +63,8 @@ M.write_session = function()
   end
 
   vim.cmd("mksession! " .. vim.fn.fnameescape(session_file))
-  vim.notify("Session saved to: " .. session_file, vim.log.levels.INFO)
+  M.save_session(session_file)
+  vim.notify("Session written: " .. session_file, vim.log.levels.INFO)
 end
 
 M.read_session = function()
