@@ -35,7 +35,7 @@ return {
     },
   },
   config = function()
-    require("mini.icons").setup()
+    require("mini.icons").setup(require("config.mini.icons"))
     require("mini.extra").setup()
     require("mini.misc").setup_termbg_sync()
     require("mini.hipatterns").setup(require("config.mini.hipatterns"))

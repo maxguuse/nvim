@@ -7,6 +7,24 @@ return {
   lazy = true,
   event = { "BufReadPost", "BufNewFile", "CmdlineEnter" },
   opts = {
+    completion = {
+      menu = {
+        draw = {
+          components = {
+            kind_icon = {
+              text = function(ctx)
+                local kind_icon, _, _ = MiniIcons.get("lsp", ctx.kind)
+                return kind_icon
+              end,
+              highlight = function(ctx)
+                local _, hl, _ = MiniIcons.get("lsp", ctx.kind)
+                return hl
+              end,
+            },
+          },
+        },
+      },
+    },
     keymap = {
       preset = "none",
       ["<S-CR>"] = { "show", "accept" },
