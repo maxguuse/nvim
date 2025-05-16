@@ -65,6 +65,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*",
+  callback = function(args)
+    local buftype = vim.api.nvim_get_option_value("buftype", { buf = args.buf })
+    if buftype ~= "help" then return end
+
+    vim.keymap.set("n", "q", "<cmd>exit<CR>", { buffer = args.buf, desc = "Quick exit for help windows" })
+  end,
+})
+
 --- Session management -----------------------------------------------------------------
 local session = require("core.session")
 -- Auto-save on exit
