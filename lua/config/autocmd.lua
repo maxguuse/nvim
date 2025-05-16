@@ -56,7 +56,23 @@ local session = require("core.session")
 -- Auto-save on exit
 vim.api.nvim_create_autocmd("VimLeavePre", {
   group = ggoose,
-  callback = require("core.session").write_session,
+  callback = function()
+    local has_normal_buffers = false
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      if vim.api.nvim_buf_is_loaded(buf) then
+        local buftype = vim.api.nvim_get_option_value("buftype", { buf = buf })
+        local bufname = vim.api.nvim_buf_get_name(buf)
+        if buftype == "" and bufname ~= "" then
+          has_normal_buffers = true
+          break
+        end
+      end
+    end
+
+    if not has_normal_buffers then return end
+
+    require("core.session").write_session()
+  end,
 })
 
 vim.api.nvim_create_autocmd("VimEnter", {
