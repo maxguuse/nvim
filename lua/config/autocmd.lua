@@ -46,6 +46,9 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
       "cssls",
       "yamlls",
     })
+
+    vim.keymap.del({ "i", "s" }, "<C-S>") -- Replaced with "<M-s>" by blink.cmp (signature help)
+    vim.keymap.del("n", "gO") -- Replaced with "cs" by mini.pick (document symbols)
   end,
 })
 
