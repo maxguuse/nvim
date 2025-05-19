@@ -63,6 +63,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function() vim.diagnostic.open_float(nil, { focusable = false, source = "if_many" }) end,
+})
+
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*",
   callback = function(args)
