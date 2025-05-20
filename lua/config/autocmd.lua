@@ -127,7 +127,12 @@ vim.api.nvim_create_autocmd("VimEnter", {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
   group = ggoose,
-  callback = function() vim.wo.wrap = true end,
+  callback = function(args)
+    vim.wo.wrap = true
+
+    vim.keymap.set("n", "k", "gk", { buffer = args.buf, desc = "Move up one display line" })
+    vim.keymap.set("n", "j", "gj", { buffer = args.buf, desc = "Move down one display line" })
+  end,
 })
 
 vim.api.nvim_create_autocmd("BufEnter", {
