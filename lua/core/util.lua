@@ -1,6 +1,6 @@
 local M = {}
 
-function M.GetProjectRoot()
+function M.get_project_root()
   local git_root = vim.fs.root(0, { ".git", "Session.vim" })
 
   if git_root and git_root ~= "" then return git_root end
@@ -27,8 +27,8 @@ local function is_protected_home_subdir(dir)
   return false
 end
 
-function M.IsProtectedDir(dir)
-  if dir == nil or dir == "" then error("Should pass dir to M.IsProtectedDir") end
+function M.is_protected_dir(dir)
+  if dir == nil or dir == "" then error("Should pass dir to M.is_protected_dir") end
 
   local home = vim.env.HOME
 

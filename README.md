@@ -20,6 +20,6 @@ Implemented as simple as possible:
 ### Session management
 
 Also implemented quite simple, so if you need some advanced session management more sophisticated plugin will be far more helpful:
-- Using `require("core.util").GetProjectRoot()` it finds directory where it should place Session.vim file(usually directory containing `.git`)
+- Using `require("core.util").get_project_root()` it finds directory where it should place Session.vim file(usually directory containing `.git`)
 - It autowrites and autoreads sessions to/from said directory
-- Using `require("core.util").IsProtectedDir()` it avoids writing sessions to any directory not located in `vim.env.HOME` or directories located exactly one level below `vim.env.HOME`
+- Using `require("core.util").is_protected_dir()` it avoids writing sessions to any directory not located in `vim.env.HOME` or directories located exactly one level below `vim.env.HOME`

@@ -10,18 +10,23 @@ return {
     },
     {
       "<leader>pf",
-      "<cmd>Pick files cwd=require('core.util').GetProjectRoot()<CR>",
+      "<cmd>Pick files cwd=require('core.util').get_project_root()<CR>",
       "Find Files",
     },
     {
       "<leader>pg",
-      "<cmd>Pick grep_live cwd=require('core.util').GetProjectRoot()<CR>",
+      "<cmd>Pick grep_live cwd=require('core.util').get_project_root()<CR>",
       "Live Grep",
     },
     {
       "<leader>pk",
       "<cmd>Pick keymaps<CR>",
       "Keymaps",
+    },
+    {
+      "<leader>po",
+      "<cmd>Pick oldfiles<CR>",
+      "Recent Files",
     },
     {
       "<leader>cx",
@@ -32,11 +37,6 @@ return {
       "<leader>cs",
       '<cmd>Pick lsp scope="document_symbol"<CR>',
       "Symbols",
-    },
-    {
-      "<leader>pp",
-      "<cmd>Pick projects<CR>",
-      "Projects",
     },
   },
   config = function()

@@ -19,7 +19,6 @@ vim.o.undofile = true
 vim.o.backup = false
 vim.o.writebackup = false
 
-vim.o.sessionoptions = "buffers,curdir,folds,help,terminal,winsize"
 vim.o.clipboard = "unnamedplus"
 
 vim.o.updatetime = 300

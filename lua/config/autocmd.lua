@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd("UILeave", {
     if last_dir_file == nil then return end
 
     local current_dir = vim.fn.getcwd()
-    if not require("core.util").IsProtectedDir(current_dir) then vim.fn.writefile({ current_dir }, last_dir_file) end
+    if not require("core.util").is_protected_dir(current_dir) then vim.fn.writefile({ current_dir }, last_dir_file) end
   end,
 })
 
@@ -74,53 +74,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
     if buftype ~= "help" then return end
 
     vim.keymap.set("n", "q", "<cmd>exit<CR>", { buffer = args.buf, desc = "Quick exit for help windows" })
-  end,
-})
-
---- Session management -----------------------------------------------------------------
-local session = require("core.session")
--- Auto-save on exit
-vim.api.nvim_create_autocmd("VimLeavePre", {
-  group = ggoose,
-  callback = function()
-    local has_normal_buffers = false
-    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-      if vim.api.nvim_buf_is_loaded(buf) then
-        local buftype = vim.api.nvim_get_option_value("buftype", { buf = buf })
-        local bufname = vim.api.nvim_buf_get_name(buf)
-        if buftype == "" and bufname ~= "" then
-          has_normal_buffers = true
-          break
-        end
-      end
-    end
-
-    if not has_normal_buffers then return end
-
-    session.write_session()
-  end,
-})
-
-vim.api.nvim_create_autocmd("VimEnter", {
-  group = ggoose,
-  callback = function()
-    if vim.fn.argc() ~= 0 or #vim.v.argv > 2 then return end
-    vim.schedule(function()
-      local read = session.read_session()
-
-      if read then return end
-
-      if not read then
-        local written = session.write_session()
-        if not written then
-          vim.cmd("Pick oldfiles")
-          return
-        end
-
-        vim.cmd('Pick files cwd=require("core.util").GetProjectRoot()')
-        return
-      end
-    end)
   end,
 })
 
