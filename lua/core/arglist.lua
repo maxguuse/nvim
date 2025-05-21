@@ -61,10 +61,16 @@ function M.toggle()
   vim.cmd("argadd | silent! next | redrawstatus")
 end
 
-function M.set_keymaps(buf)
-  vim.keymap.set("n", "<C-l>", M.next, { buffer = buf, desc = "Next argument (wrap)" })
-  vim.keymap.set("n", "<C-h>", M.prev, { buffer = buf, desc = "Previous argument (wrap)" })
-  vim.keymap.set("n", "<C-s>", M.toggle, { buffer = buf, desc = "Toggle file in arglist" })
-end
+--- Keymaps --------------------------------------------------------------------------------------
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*",
+  callback = function(args)
+    if vim.bo[args.buf].buftype ~= "" then return end
+
+    vim.keymap.set("n", "<C-l>", M.next, { buffer = args.buf, desc = "Next argument (wrap)" })
+    vim.keymap.set("n", "<C-h>", M.prev, { buffer = args.buf, desc = "Previous argument (wrap)" })
+    vim.keymap.set("n", "<C-s>", M.toggle, { buffer = args.buf, desc = "Toggle file in arglist" })
+  end,
+})
 
 return M

@@ -64,14 +64,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 vim.api.nvim_create_autocmd("CursorHold", {
-  callback = function() vim.diagnostic.open_float(nil, { focusable = false, source = "if_many" }) end,
+  callback = function() vim.diagnostic.open_float({ border = "single", scope = "cursor", source = "if_many" }) end,
 })
 
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*",
   callback = function(args)
-    local buftype = vim.api.nvim_get_option_value("buftype", { buf = args.buf })
-    if buftype ~= "help" then return end
+    if vim.bo[args.buf].buftype ~= "help" then return end
 
     vim.keymap.set("n", "q", "<cmd>exit<CR>", { buffer = args.buf, desc = "Quick exit for help windows" })
   end,
@@ -80,28 +79,28 @@ vim.api.nvim_create_autocmd("BufEnter", {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
   group = ggoose,
+  desc = "Markdown-specific settings",
   callback = function(args)
+    -- Enable wrap only for Markdown
     vim.wo.wrap = true
 
-    vim.keymap.set("n", "k", "gk", { buffer = args.buf, desc = "Move up one display line" })
-    vim.keymap.set("n", "j", "gj", { buffer = args.buf, desc = "Move down one display line" })
-  end,
-})
+    -- Buffer-local keymaps for visual line movement
+    local opts = { buffer = args.buf, desc = "Move by display line" }
+    vim.keymap.set("n", "k", "gk", opts)
+    vim.keymap.set("n", "j", "gj", opts)
+    vim.keymap.set("n", "0", "g0", opts)
+    vim.keymap.set("n", "$", "g$", opts)
 
-vim.api.nvim_create_autocmd("BufEnter", {
-  group = ggoose,
-  callback = function()
-    if vim.bo.filetype ~= "markdown" then vim.wo.wrap = false end
-  end,
-})
-
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = "*",
-  callback = function(args)
-    local buftype = vim.api.nvim_get_option_value("buftype", { buf = args.buf })
-    if buftype ~= "" then return end
-
-    require("core.arglist").set_keymaps(args.buf)
+    -- Cleanup when leaving Markdown (better than BufEnter check)
+    vim.api.nvim_create_autocmd("BufWinLeave", {
+      buffer = args.buf,
+      once = true,
+      callback = function()
+        if vim.bo.filetype == "markdown" then -- Double-check
+          vim.wo.wrap = false
+        end
+      end,
+    })
   end,
 })
 
