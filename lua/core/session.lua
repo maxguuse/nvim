@@ -27,7 +27,7 @@ function M.save_session(session)
   if session == "" then return end
 
   local existing_sessions = M.read_saved_sessions()
-  if not M.contains(existing_sessions, session) then table.insert(existing_sessions, session) end
+  if not vim.tbl_contains(existing_sessions, session) then table.insert(existing_sessions, session) end
 
   local file = io.open(saved_sessions_file, "w+")
 
@@ -40,13 +40,6 @@ function M.save_session(session)
   else
     return false, "Could not open file for writing"
   end
-end
-
-function M.contains(tbl, item)
-  for _, value in ipairs(tbl) do
-    if value == item then return true end
-  end
-  return false
 end
 
 M.write_session = function()
