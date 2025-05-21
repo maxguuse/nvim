@@ -1,45 +1,18 @@
 local M = {}
 
-local saved_sessions_file = vim.env.HOME .. "/.local/state/nvim/ggoose_sessions"
+local saved_sessions_file = vim.fn.stdpath("data") .. "/ggoose_sessions"
 
 function M.read_saved_sessions()
-  local lines = {}
+  if vim.fn.filereadable(saved_sessions_file) == 0 then vim.fn.writefile({}, saved_sessions_file) end
 
-  local file = io.open(saved_sessions_file, "r")
-  if file then
-    for line in file:lines() do
-      table.insert(lines, line)
-    end
-  else
-    file = io.open(saved_sessions_file, "w")
-    if file then
-      file:close()
-      print("Created new file: " .. saved_sessions_file)
-    else
-      error("Failed to create file: " .. saved_sessions_file)
-    end
-  end
-
-  return lines
+  return vim.fn.readfile(saved_sessions_file)
 end
 
 function M.save_session(session)
   if session == "" then return end
+  if vim.tbl_contains(M.read_saved_sessions(), session) then return end
 
-  local existing_sessions = M.read_saved_sessions()
-  if not vim.tbl_contains(existing_sessions, session) then table.insert(existing_sessions, session) end
-
-  local file = io.open(saved_sessions_file, "w+")
-
-  if file then
-    for _, line in ipairs(existing_sessions) do
-      file:write(line .. "\n")
-    end
-    file:close()
-    return true
-  else
-    return false, "Could not open file for writing"
-  end
+  vim.fn.writefile({ session }, saved_sessions_file, "a")
 end
 
 M.write_session = function()
