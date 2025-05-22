@@ -4,4 +4,4 @@ require("config.autocmd")
 
 require("core.session")
 
-require("config.lazy")
+require("lazy.setup")
