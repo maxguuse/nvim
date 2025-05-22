@@ -40,22 +40,22 @@ return {
     },
   },
   config = function()
-    require("mini.icons").setup(require("config.mini.icons"))
+    require("mini.icons").setup(require("plugins.mini.icons"))
     require("mini.extra").setup()
     require("mini.misc").setup_termbg_sync()
-    require("mini.hipatterns").setup(require("config.mini.hipatterns"))
+    require("mini.hipatterns").setup(require("plugins.mini.hipatterns"))
 
     require("mini.pairs").setup()
     require("mini.surround").setup()
-    require("mini.jump").setup(require("config.mini.jump"))
+    require("mini.jump").setup(require("plugins.mini.jump"))
     require("mini.splitjoin").setup()
 
     require("mini.git").setup()
-    require("mini.statusline").setup(require("config.mini.statusline"))
+    require("mini.statusline").setup(require("plugins.mini.statusline"))
 
-    require("mini.files").setup(require("config.mini.files"))
-    require("mini.pick").setup(require("config.mini.pick"))
+    require("mini.files").setup(require("plugins.mini.files"))
+    require("mini.pick").setup(require("plugins.mini.pick"))
 
-    require("mini.notify").setup(require("config.mini.notify"))
+    require("mini.notify").setup(require("plugins.mini.notify"))
   end,
 }
