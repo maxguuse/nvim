@@ -47,7 +47,7 @@ return {
 
     require("mini.pairs").setup()
     require("mini.surround").setup()
-    require("mini.jump").setup()
+    require("mini.jump").setup(require("config.mini.jump"))
     require("mini.splitjoin").setup()
 
     require("mini.git").setup()
